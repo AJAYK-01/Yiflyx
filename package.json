@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "node ssr-server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node ssr-server.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
+    "justwatch-api": "^1.0.7",
     "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1"
