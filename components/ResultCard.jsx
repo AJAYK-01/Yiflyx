@@ -45,7 +45,7 @@ export default function ResultCard(props) {
 
   const router = useRouter();
 
-  const { poster, title, id, year } = props;
+  const { poster, title, id, year, type } = props;
 
   const container = {
       margin: '16px', 
@@ -57,9 +57,9 @@ export default function ResultCard(props) {
   }
 
   return (
-    <span title={`${server}/details/${id}`}>
+    <span title={`${server}/details/${type}/${id}`}>
       <div style={container} 
-        onClick={()=>router.push(`/details/${id}`)}  >
+        onClick={()=>router.push(`/details/${type}/${id}`)}  >
           <Image 
               src={poster}
               alt={(<div style={{color: 'red'}} />)}

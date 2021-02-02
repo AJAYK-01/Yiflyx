@@ -40,7 +40,12 @@ export default function DetailsCard(props) {
             
             <p style={desc} >{data['desc']}</p>
             
-            <p style={subtitle} >Where to Watch</p>
+            {data['links'].length !== 0 
+                ? (
+                    <p style={subtitle} >Where to Watch</p>
+                )
+                : (<div />)
+            }
 
             <div style={streambuttons} >
                 {data['links'].map((link) => {
@@ -50,9 +55,17 @@ export default function DetailsCard(props) {
                 })}
             </div>
             
-            <a href={data['trailer']} target='_blank' rel='noopener noreferrer' >
-                <p style={subtitle} >Watch Trailer</p>
-            </a>
+            {data['trailer'] !== '' 
+                ? (
+                    <a href={data['trailer']} target='_blank' rel='noopener noreferrer' >
+                        <p style={subtitle} >Watch Trailer</p>
+                    </a>        
+                ) 
+                : (
+                    <div />
+                )
+            }
+            
             
         </div>
     )

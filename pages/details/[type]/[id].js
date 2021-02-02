@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 import Image from 'next/image';
-import { server } from '../../config';
-import DetailsCard from '../../components/DetailsCard';
+import { server } from '../../../config';
+import DetailsCard from '../../../components/DetailsCard';
 
 
 function Details({ data }) {
@@ -38,8 +38,9 @@ function Details({ data }) {
 export async function getServerSideProps(context) {
 
     const id = context.query['id'];
+    const type = context.query['type'];
 
-    const result = await axios.get(`${server}/d/${id}`);
+    const result = await axios.get(`${server}/d/${type}/${id}`);
     const data = await result.data;
 
     return { props: { data } }

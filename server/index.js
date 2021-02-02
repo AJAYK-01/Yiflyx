@@ -25,6 +25,7 @@ app.prepare()
       results.data['items'].forEach(details => {
         let title = details['title'];
         let id = details['id'];
+        let type = details['object_type'];
           
         var picId;
         if(details['poster']) {
@@ -36,7 +37,7 @@ app.prepare()
         let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
         let year = details['original_release_year'];
 
-        const params = { id: id, title: title, poster: poster, year: year };
+        const params = { id: id, title: title, poster: poster, year: year, type: type };
         items.push(params);
       
       });
@@ -57,6 +58,7 @@ app.prepare()
       results['items'].forEach(details => {
         let title = details['title'];
         let id = details['id'];
+        let type = details['object_type'];
           
         var picId;
         if(details['poster']) {
@@ -68,7 +70,7 @@ app.prepare()
         let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
         let year = details['original_release_year'];
 
-        const params = { id: id, title: title, poster: poster, year: year };
+        const params = { id: id, title: title, poster: poster, year: year, type: type };
         items.push(params);
       
       });
@@ -78,10 +80,11 @@ app.prepare()
     })
   })
     
-  server.get('/d/:id', (req, res) => {
+  server.get('/d/:type/:id', (req, res) => {
 
     const id = req.params.id;
-    jw.getTitle('movie', id).then( details => {
+    const type = req.params.type;
+    jw.getTitle(type , id).then( details => {
       try{
         let title = details['title'];
         
@@ -96,23 +99,34 @@ app.prepare()
         let desc = details['short_description'];
         let year = details['original_release_year'];
 
-        let streams = details['offers'];
+        var streams = [];
         let links = [];
-        let uids = [];
+        try{
+          streams = details['offers'];
+          let uids = [];
+  
+         
+          streams.forEach((stream) => {
+            let uid = stream['provider_id'];
+  
+            if(!(uids.includes(uid))) {
+              let url = stream['urls']['standard_web'];
+              links.push({id: uid, url: url});
+              uids.push(uid);
+            }
+          })
+        }
+        catch (e) {
+          console.log('line 120'+e);
+        }
 
-       
-        streams.forEach((stream) => {
-          let uid = stream['provider_id'];
-
-          if(!(uids.includes(uid))) {
-            let url = stream['urls']['standard_web'];
-            links.push({id: uid, url: url});
-            uids.push(uid);
-          }
-        })
-
-
-        let trailer = `https://youtu.be/${details['clips'][0]['external_id']}`
+        var trailer = ''
+        try{
+          trailer = `https://youtu.be/${details['clips'][0]['external_id']}`
+        }
+        catch (e){
+          console.log('line 121'+e);
+        }
 
         const params = { 
           id: id, 
