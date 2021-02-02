@@ -63,7 +63,7 @@ app.prepare()
             picId = details['poster'].split("/")[2];
         }
         else {
-            picId = '9634649';
+            picId = '00';
         }
         let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
         let year = details['original_release_year'];
@@ -82,6 +82,7 @@ app.prepare()
 
     const id = req.params.id;
     jw.getTitle('movie', id).then( details => {
+      try{
         let title = details['title'];
         
         var picId;
@@ -95,10 +96,42 @@ app.prepare()
         let desc = details['short_description'];
         let year = details['original_release_year'];
 
-        const params = { id: id, title: title, poster: poster, desc: desc, year: year };
+        let streams = details['offers'];
+        let links = [];
+        let uids = [];
+
+       
+        streams.forEach((stream) => {
+          let uid = stream['provider_id'];
+
+          if(!(uids.includes(uid))) {
+            let url = stream['urls']['standard_web'];
+            links.push({id: uid, url: url});
+            uids.push(uid);
+          }
+        })
+
+
+        let trailer = `https://youtu.be/${details['clips'][0]['external_id']}`
+
+        const params = { 
+          id: id, 
+          title: title, 
+          poster: poster, 
+          desc: desc, 
+          year: year,
+          links: links,
+          trailer: trailer
+        };
 
         res.json(params);
         // return app.render(req, res, '/details', params);
+      }
+      catch (e) {
+        console.log('fuk');
+        // res.redirect(301, '/notfound');
+        res.status(404).render('https://imdb.com/');
+      }
     })
 
   })

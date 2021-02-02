@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Image from 'next/image';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,6 +11,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 
 import { useRouter } from 'next/router';
+import { server } from '../config';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,36 +47,58 @@ export default function ResultCard(props) {
 
   const { poster, title, id, year } = props;
 
+  const container = {
+      margin: '16px', 
+      flex: 'display', 
+      flexDirection: 'row', 
+      width: '160px',
+      cursor: 'pointer',
+      justifyContent: 'center'
+  }
+
   return (
-    <div style={{margin: '10px'}}>
-        <Card onClick={()=>router.push(`/details/${id}`)} className={classes.root}>
-        <CardMedia
-            className={classes.cover}
-            image={poster}
-            // title={title}
-        />
-        <div className={classes.details}>
-            <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-                {title}
-            </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-                {year}
-            </Typography>
-            </CardContent>
-            {/* <div className={classes.controls}>
-            <IconButton aria-label="previous">
-                {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-            </IconButton>
-            <IconButton aria-label="play/pause">
-                <PlayArrowIcon className={classes.playIcon} />
-            </IconButton>
-            <IconButton aria-label="next">
-                {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-            </IconButton>
-            </div> */}
-        </div>
-        </Card>
-    </div>
+    <span title={`${server}/details/${id}`}>
+      <div style={container} 
+        onClick={()=>router.push(`/details/${id}`)}  >
+          <Image 
+              src={poster}
+              alt={(<div style={{color: 'red'}} />)}
+              height={200}
+              width={140}
+          />
+          <p>{title+' ('+year+')'}</p>
+
+      </div>
+    </span>
+    // <div style={{margin: '10px'}}>
+    //     <Card onClick={()=>router.push(`/details/${id}`)} className={classes.root}>
+    //     <CardMedia
+    //         className={classes.cover}
+    //         image={poster}
+    //         // title={title}
+    //     />
+    //     <div className={classes.details}>
+    //         <CardContent className={classes.content}>
+    //         <Typography component="h5" variant="h5">
+    //             {title}
+    //         </Typography>
+    //         <Typography variant="subtitle1" color="textSecondary">
+    //             {year}
+    //         </Typography>
+    //         </CardContent>
+    //         {/* <div className={classes.controls}>
+    //         <IconButton aria-label="previous">
+    //             {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+    //         </IconButton>
+    //         <IconButton aria-label="play/pause">
+    //             <PlayArrowIcon className={classes.playIcon} />
+    //         </IconButton>
+    //         <IconButton aria-label="next">
+    //             {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+    //         </IconButton>
+    //         </div> */}
+    //     </div>
+    //     </Card>
+    // </div>
   );
 }

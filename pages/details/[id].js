@@ -1,14 +1,37 @@
 import axios from 'axios';
 import React from 'react';
+import Image from 'next/image';
 import { server } from '../../config';
+import DetailsCard from '../../components/DetailsCard';
 
 
 function Details({ data }) {
 
     // console.log(data);
+    const container = {
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'center', 
+        height: '100vh',
+        padding: '20px'
+    }
+
+    const image = {
+        borderRadius: '50px' ,  
+        display: 'block'
+    }
 
     return(
-        <h1>{JSON.stringify(data)}</h1>
+        <div style={container} >
+            <div style={image} >
+                <Image 
+                    src={data['poster']}
+                    height={400}
+                    width={280}
+                />
+            </div>
+            <DetailsCard data={data} />
+        </div>
     );
 }
 

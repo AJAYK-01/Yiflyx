@@ -93,6 +93,11 @@ export default function HeaderNavBar() {
       router.push('/search/'+searchTerm);
   }
 
+  const goToHome = () => {
+      setTerm('');
+      router.push('/');
+  }
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -185,7 +190,7 @@ export default function HeaderNavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography onClick={()=>router.push('/')} style={{cursor: 'pointer'}}
+          <Typography onClick={()=>goToHome()} style={{cursor: 'pointer'}}
             className={classes.title} variant="h6" noWrap>
             Yiflyx
           </Typography>

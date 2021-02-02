@@ -10,7 +10,7 @@ function Search({ data }) {
     const results = data['items'];
 
     return(
-        <div style={{display: 'flex', alignContent: 'center', flexWrap: 'wrap'}}>
+        <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
             {results.map((result) => {
                 return(
                     <div >

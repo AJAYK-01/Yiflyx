@@ -13,7 +13,7 @@ function Trending({ data }) {
       
             // <div>            
             // {JSON.stringify(data['items'])} </div>
-            <div style={{display: 'flex', alignContent: 'center', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
                 {results.map((result) => {
                     return(
                         <div >
