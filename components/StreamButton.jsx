@@ -1,4 +1,3 @@
-import { Button } from '@material-ui/core';
 import React from 'react';
 
 export default function StreamButton(props) {
@@ -7,39 +6,41 @@ export default function StreamButton(props) {
     var provider;
 
     if(id === 3) {
-        provider = 'Play Movies'
+        provider = 'play'
     }
     else if(id === 8) {
-        provider = 'Netflix'
+        provider = 'netflix'
     }
     else if(id === 119) {
-        provider = 'Amazon Prime'
+        provider = 'prime'
     }
     else if(id === 192) {
-        provider = 'Youtube Movies'
+        provider = 'youtube'
     }
     else if(id === 122) {
-        provider = 'Disney+ Hotstar'
+        provider = 'hotstar'
     }
     else if(id === 2) {
-        provider = 'Itunes'
+        provider = 'itunes'
     }
     else if(id === 437) {
-        provider = 'Hungama'
+        provider = 'hungama'
     }
     else if(id === 502) {
-        provider = 'TataSky'
+        provider = 'tata'
     }
     else {
-        provider = 'Other'
+        provider = 'other'
     }
 
     return(
-        <a href={url} target='_blank' rel="noopener noreferrer" >
-            <Button >
-                {provider}
-            </Button>
+        <a href={url} target='_blank' rel="noopener noreferrer" style={{marginRight: '30px'}} >
+            <img 
+                src={`/assets/${provider}.jpg`}
+                width={50}
+                height={50}
+                style={{borderRadius: '8px'}}
+            />
         </a>
-        
     )
 }

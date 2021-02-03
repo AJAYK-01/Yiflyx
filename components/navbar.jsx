@@ -3,24 +3,14 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   FormInput,
-  Collapse
 } from "shards-react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css"
 import { useRouter } from "next/router";
 
 export default function HeaderNavBar() {
@@ -34,22 +24,40 @@ export default function HeaderNavBar() {
             router.push('/search/'+searchTerm);
     }
 
+    const topbar = {
+      display: 'flex',
+      justifyContent: 'space-around'
+    }
+
+    const searchContainer = {
+      width: '1100px',
+      maxWidth: '90%', 
+      display: 'flex', 
+      justifyContent: 'space-around'
+    }
+
+    const searchBox = {
+      width: '400px', 
+      maxWidth: '100%'
+    }
+
     return (
-      <Navbar type="dark" expand="md" >
+      <Navbar type="dark" style={topbar} >
         <NavbarBrand href="/" style={{fontSize: '30px'}} >Yiflyx</NavbarBrand>
 
-        <Nav navbar className="ml-auto">
-        <form onSubmit={search} >
-        <InputGroup size="sm" seamless>
-            <InputGroupAddon type="prepend">
-            <InputGroupText>
-                <FontAwesomeIcon icon={faSearch} />
-            </InputGroupText>
-            </InputGroupAddon>
-                <FormInput className="border-0" placeholder="Search..." value={searchTerm} 
-                onChange={(e) => setTerm(e.target.value)} />
-        </InputGroup>
-        </form>
+        <Nav style={searchContainer} >
+          <div  style={{width: '580px'}} />
+          <form onSubmit={search} style={searchBox} >
+            <InputGroup size="sm" seamless  >
+                <InputGroupAddon type="prepend">
+                <InputGroupText>
+                    <FontAwesomeIcon icon={faSearch} />
+                </InputGroupText>
+                </InputGroupAddon>
+                    <FormInput className="border-0" placeholder="Search..." value={searchTerm} 
+                    onChange={(e) => setTerm(e.target.value)} />
+            </InputGroup>
+          </form>
         </Nav>
       </Navbar>
     );

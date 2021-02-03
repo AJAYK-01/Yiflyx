@@ -16,19 +16,20 @@ export default function DetailsCard(props) {
 
     const title = {
         fontSize: '30px',
-        marginTop: '10px',
         marginBottom: '10px',
         color: 'white'
     }
 
     const desc = {
         fontSize: '15px',
-        color: 'white'
+        color: 'white',
+        marginBottom: '15px'
     }
 
     const subtitle = {
         fontSize: '20px',
-        color: 'white'
+        color: 'white',
+        marginBottom: '10px',
     }
 
     const streambuttons = {
@@ -60,9 +61,12 @@ export default function DetailsCard(props) {
             
             {data['trailer'] !== '' 
                 ? (
-                    <a href={data['trailer']} target='_blank' rel='noopener noreferrer' >
+                    <div>
                         <p style={subtitle} >Watch Trailer</p>
-                    </a>        
+                        <div style={streambuttons} >
+                            <StreamButton id={192} url={data['trailer']} />
+                        </div>
+                    </div>
                 ) 
                 : (
                     <div />

@@ -9,7 +9,7 @@ function getDetails(id, details) {
         else {
             picId = '9634649';
         }
-        let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
+        let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s332';
         let desc = details['short_description'];
         let year = details['original_release_year'];
 
