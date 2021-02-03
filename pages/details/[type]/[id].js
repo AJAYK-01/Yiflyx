@@ -8,12 +8,20 @@ import DetailsCard from '../../../components/DetailsCard';
 function Details({ data }) {
 
     // console.log(data);
+
     const container = {
-        display: 'flex', 
+        display: 'flex',
+        margin: 'auto', 
         flexDirection: 'row', 
         justifyContent: 'center', 
-        height: '100vh',
-        padding: '20px'
+        paddingTop: '22px',
+        paddingBottom: '55px',
+        paddingLeft: '10px',
+        paddingRight: '10px',
+        backgroundColor: '#ffffff28',
+        maxWidth: '1100px',
+        borderRadius: '20px'
+
     }
 
     const image = {
@@ -22,15 +30,17 @@ function Details({ data }) {
     }
 
     return(
-        <div style={container} >
-            <div style={image} >
-                <Image 
-                    src={data['poster']}
-                    height={400}
-                    width={280}
-                />
+        <div >
+            <div style={container} >
+                <div style={image} >
+                    <Image 
+                        src={data['poster']}
+                        height={400}
+                        width={280}
+                    />
+                </div>
+                <DetailsCard data={data} />
             </div>
-            <DetailsCard data={data} />
         </div>
     );
 }

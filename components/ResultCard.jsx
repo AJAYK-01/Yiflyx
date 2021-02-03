@@ -52,8 +52,18 @@ export default function ResultCard(props) {
       flex: 'display', 
       flexDirection: 'row', 
       width: '160px',
+      height: '305px',
       cursor: 'pointer',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      backgroundColor: '#ffffff28',
+      borderRadius: '8px'
+  }
+
+  const text = {
+    color: 'white', 
+    fontWeight: '500',
+    paddingLeft: '5px',
+    paddingRight: '5px'
   }
 
   return (
@@ -63,10 +73,10 @@ export default function ResultCard(props) {
           <Image 
               src={poster}
               alt={(<div style={{color: 'red'}} />)}
-              height={200}
-              width={140}
+              height={210}
+              width={160}
           />
-          <p>{title+' ('+year+')'}</p>
+          <p style={text} >{title+' ('+year+')'}</p>
 
       </div>
     </span>

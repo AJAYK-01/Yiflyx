@@ -4,9 +4,9 @@ const Layout = (props) => {
     return(
         <div >
             <HeaderNavBar />
-            <div style={{backgroundColor: 'grey'}} >
+            {/* <div style={{backgroundColor: 'grey'}} > */}
                 {props.children}
-            </div>
+            {/* </div> */}
         </div>
     )
 }

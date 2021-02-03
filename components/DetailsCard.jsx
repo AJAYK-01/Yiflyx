@@ -11,21 +11,24 @@ export default function DetailsCard(props) {
         justifyContent: 'flex-start',
         // height: '100%', 
         maxWidth: '50%', 
-        paddingLeft: '30px'   
+        paddingLeft: '30px',
     }
 
     const title = {
         fontSize: '30px',
         marginTop: '10px',
-        marginBottom: '10px'
+        marginBottom: '10px',
+        color: 'white'
     }
 
     const desc = {
-        fontSize: '15px'
+        fontSize: '15px',
+        color: 'white'
     }
 
     const subtitle = {
-        fontSize: '20px'
+        fontSize: '20px',
+        color: 'white'
     }
 
     const streambuttons = {
