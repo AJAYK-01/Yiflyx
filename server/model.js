@@ -66,28 +66,53 @@ function getResults(results) {
     var items = [];
 
     results['items'].forEach(details => {
-    let title = details['title'];
-    let id = details['id'];
-    let type = details['object_type'];
-        
-    var picId;
-    if(details['poster']) {
-        picId = details['poster'].split("/")[2];
-    }
-    else {
-        picId = '00';
-    }
-    let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
-    let year = details['original_release_year'];
+      let title = details['title'];
+      let id = details['id'];
+      var type = details['object_type'];
+      var desc;
+      try{
+        desc = details['short_description'];
+      }
+      catch (e) {
+        console.log('desc77'+e);
+      }
+          
+      var picId;
+      if(details['poster']) {
+          picId = details['poster'].split("/")[2];
+      }
+      else {
+          picId = '00';
+      }
+      let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
+      let year = details['original_release_year'];
 
-    const params = { id: id, title: title, poster: poster, year: year, type: type };
-    items.push(params);
+      const params = { id: id, title: title, poster: poster, year: year, type: type, desc: desc };
+      items.push(params);
     
     });
     let data = {items: items};
     return(data);
     // return app.render(req, res, '/search', result);
 }
+
+// function getForCarousel(data) {
+    
+//     let movies = [];
+//     let shows = [];
+
+//     data.forEach(element => {
+//         if(element['type'] === 'movie') {
+//           movies.push(element);
+//         }
+//         else {
+//           shows.push(element);
+//         }
+//     })
+
+//     let results = {'movies': movies, 'shows': shows};
+//     return(results);
+// }
 
 module.exports = {
     getDetails: getDetails,

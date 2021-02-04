@@ -14,20 +14,21 @@ export default function ResultCard(props) {
 
   const container = {
       margin: '16px', 
-      flex: 'display', 
-      flexDirection: 'row', 
       width: '186px',
       height: '310px',
       cursor: 'pointer',
       justifyContent: 'center',
       backgroundColor: '#ffffff28',
-      borderRadius: '6px',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      boxShadow: '6px 6px 8px #00000050'
   }
 
   const text = {
     color: 'white', 
     fontWeight: '500',
-    fontSize: '15px',
+    fontSize: '14px',
+    fontFamily: 'poppins',
     paddingLeft: '5px',
     paddingRight: '5px',
     whiteSpace: 'nowrap',

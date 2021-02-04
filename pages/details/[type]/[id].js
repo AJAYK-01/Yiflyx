@@ -20,7 +20,8 @@ function Details({ data }) {
         paddingRight: '10px',
         backgroundColor: '#ffffff28',
         maxWidth: '1100px',
-        borderRadius: '20px'
+        borderRadius: '20px',
+        boxShadow: '8px 6px 8px #00000080'
 
     }
 

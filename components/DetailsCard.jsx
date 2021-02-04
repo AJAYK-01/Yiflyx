@@ -15,7 +15,9 @@ export default function DetailsCard(props) {
     }
 
     const title = {
-        fontSize: '30px',
+        fontFamily: 'poppins',
+        fontSize: '28px',
+        fontWeight: '500',
         marginBottom: '10px',
         color: 'white'
     }
@@ -27,7 +29,8 @@ export default function DetailsCard(props) {
     }
 
     const subtitle = {
-        fontSize: '20px',
+        fontSize: '18px',
+        fontFamily: 'poppins',
         color: 'white',
         marginBottom: '10px',
     }

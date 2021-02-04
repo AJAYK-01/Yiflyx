@@ -43,7 +43,7 @@ export default function HeaderNavBar() {
 
     return (
       <Navbar type="dark" style={topbar} >
-        <NavbarBrand href="/" style={{fontSize: '30px'}} >Yiflyx</NavbarBrand>
+        <NavbarBrand href="/" style={{fontSize: '30px', fontWeight: '600'}} >Yiflyx</NavbarBrand>
 
         <Nav style={searchContainer} >
           <div  style={{width: '580px'}} />

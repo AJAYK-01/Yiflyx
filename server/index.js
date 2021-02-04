@@ -4,7 +4,7 @@ const next = require('next');
 const JustWatch = require('justwatch-api');
 const axios = require('axios');
 
-const { getDetails, getResults } = require('./model');
+const { getDetails, getResults, getForCarousel } = require('./model');
     
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev });
@@ -18,11 +18,27 @@ app.prepare()
 
   server.get('/trending', (req,res) => {
 
-    axios('https://apis.justwatch.com/content/titles/en_IN/popular?body={"page_size":'+35+',"page":1,"query":"'+null+'","content_types":["'+'movie'+'"]}')
+    axios('https://apis.justwatch.com/content/titles/en_US/popular?body={"page_size":'+35+',"page":1,"query":"'+null+'","content_types":["'+'movie'+'"]}')
     .then(results => {
 
-        let data = getResults(results.data);
-        res.json(data);
+        let movies = getResults(results.data);
+        axios('https://apis.justwatch.com/content/titles/en_US/popular?body={"page_size":'+35+',"page":1,"query":"'+null+'","content_types":["'+'show'+'"]}')
+        .then(showRes => {
+            let shows = getResults(showRes.data);
+
+            axios('https://apis.justwatch.com/content/titles/en_US/new?body={"page_size":'+1+',"page":1,"query":"'+null+'","content_types":["'+'movie'+'"]}')
+            .then(trends => {
+
+              let trending = getResults(trends.data['days'][0]['providers'][0]);
+
+              let data = {'movies': movies['items'], 'shows': shows['items'], trending: trending['items']};
+              // data.push(shows['items'])
+              // console.log(data);
+              // let carousel = getForCarousel(data);
+      
+              res.json(data);
+            });
+        });
         // return app.render(req, res, '/trending', results.data);
     })
   
