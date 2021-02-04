@@ -39,7 +39,7 @@ export default function TopCarousel(props) {
             responsive={responsive}
             ssr={true}
             infinite={true}
-            removeArrowOnDeviceType={['desktop', 'tablet', 'mobile']}
+            removeArrowOnDeviceType={['desktop', 'tablet', 'mobile', 'desktopmin', 'toosmall']}
         >
             {props.children}
         </Carousel>

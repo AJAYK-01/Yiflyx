@@ -13,31 +13,35 @@ function Details({ data }) {
         display: 'flex',
         margin: 'auto', 
         flexDirection: 'row', 
-        justifyContent: 'center', 
-        paddingTop: '22px',
-        paddingBottom: '55px',
+        justifyContent: 'space-around', 
+        paddingTop: '35px',
+        paddingBottom: '35px',
         paddingLeft: '10px',
         paddingRight: '10px',
         backgroundColor: '#ffffff28',
         maxWidth: '1100px',
         borderRadius: '20px',
-        boxShadow: '8px 6px 8px #00000080'
-
+        boxShadow: '8px 6px 8px #00000080',
+        flexWrap: 'wrap',        
     }
 
     const image = {
         borderRadius: '50px' ,  
-        display: 'block'
+        display: 'flex',
+        marginBottom: '10px',
+        justifyContent: 'center',
+        maxWidth: '400px',
     }
 
     return(
         <div >
             <div style={container} >
                 <div style={image} >
-                    <Image 
+                    <img 
                         src={data['poster']}
                         height={400}
                         width={280}
+                        style={{objectFit: 'scale-down'}}
                     />
                 </div>
                 <DetailsCard data={data} />

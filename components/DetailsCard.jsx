@@ -9,9 +9,9 @@ export default function DetailsCard(props) {
         display: 'flex', 
         flexDirection: 'column', 
         justifyContent: 'flex-start',
-        // height: '100%', 
-        maxWidth: '50%', 
-        paddingLeft: '30px',
+        maxWidth: '560px', 
+        paddingLeft: '10px',
+        paddingRight: '10px'
     }
 
     const title = {
@@ -41,8 +41,7 @@ export default function DetailsCard(props) {
     }
 
     return(
-        <div 
-            style={container} >
+        <div style={container} >
             <p style={title} >{data['title']+` (${data['year']})`}</p>
             
             <p style={desc} >{data['desc']}</p>
@@ -75,8 +74,6 @@ export default function DetailsCard(props) {
                     <div />
                 )
             }
-            
-            
         </div>
     )
 }

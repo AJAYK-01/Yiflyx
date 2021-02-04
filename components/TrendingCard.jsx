@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { server } from '../config';
 
-// import './zoom.css';
-
 export default function TrendingCard(props) {
 
   const router = useRouter();
@@ -17,7 +15,7 @@ export default function TrendingCard(props) {
       display: 'flex',
       flexDirection: 'row', 
       width: '560px',
-      maxWidth: '100%',
+      maxWidth: '90%',
       height: '280px',
       cursor: 'pointer',
       justifyContent: 'flex-start',
@@ -87,8 +85,6 @@ export default function TrendingCard(props) {
                 <p style={subtext} >{desc}</p>
               </div>
           </div>
-          {/* <div style={subtext} >{`(${year})`}</div> */}
-
       </div>
     </span>
   );

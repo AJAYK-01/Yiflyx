@@ -48,9 +48,9 @@ export default function ResultCard(props) {
     <span title={`${server}/details/${type}/${id}`}>
       <div style={container} className='grow'
         onClick={()=>router.push(`/details/${type}/${id}`)}  >
-          <Image 
+          <img 
               src={poster}
-              alt={(<div style={{color: 'red'}} />)}
+              alt={''}
               height={250}
               width={186}
               objectFit='cover'

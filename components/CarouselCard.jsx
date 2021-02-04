@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { server } from '../config';
 
-// import './zoom.css';
-
 export default function CarouselCard(props) {
 
   const router = useRouter();
@@ -32,7 +30,7 @@ export default function CarouselCard(props) {
         onClick={()=>router.push(`/details/${type}/${id}`)}  >
           <Image 
               src={poster}
-              alt={(<div style={{color: 'red'}} />)}
+              alt={''}
               height={155}
               width={110}
               objectFit='cover'
