@@ -69,6 +69,7 @@ function Trending({ data }) {
             <Head>
                 <title>Yiflyx - Discover latest movies and shows</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="title" content="Yiflyx" key="title" />
                 <meta property="description" content="Find and share all your favourite movies and shows at Yiflyx" key="description" />
             </Head>
 
@@ -120,12 +121,12 @@ function Trending({ data }) {
     );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
     const result = await axios.get(`${server}/trending`);
     const data = await result.data;
 
-    return { props: { data } }
+    return { props: { data }, revalidate: 1200 }
 }
 
 export default Trending;

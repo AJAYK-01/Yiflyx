@@ -14,6 +14,7 @@ function Search({ data, term }) {
             <Head>
                 <title>{`"${term}" - Yiflyx Search`}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="title" content="Yiflyx" key="title" />
                 <meta property="description" content="Find and share all your favourite movies and shows at Yiflyx" key="description" />
             </Head>
             <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>

@@ -20,7 +20,7 @@ export default function DetailsCard(props) {
     const titleBar = {
         display: 'flex', 
         flexDirection: 'row', 
-        justifyContent: 'space-between',
+        justifyContent: 'space-between'
     }
 
     const title = {
@@ -82,7 +82,7 @@ export default function DetailsCard(props) {
                 <p style={title} >{data['title']+` (${data['year']})`}</p>
                 
                 <FontAwesomeIcon icon={faShareAlt} color={'white'} size={'2x'} onClick={share}
-                    style={{padding: '4px', cursor: 'pointer'}} />
+                    style={{ marginTop: '5px', cursor: 'pointer'}} />
 
             </div>
             <p style={desc} >{data['desc']}</p>

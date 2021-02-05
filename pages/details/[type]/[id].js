@@ -37,6 +37,7 @@ function Details({ data }) {
             <Head>
                 <title>{`${data['title']} (${data['year']}) - Yiflyx`}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="title" content="Yiflyx" key="title" />
                 <meta property="description" content="Find and share all your favourite movies and shows at Yiflyx" key="description" />
             </Head>
             <div style={{padding: '15px'}} >
