@@ -1,5 +1,5 @@
 import React from 'react';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 import { useRouter } from 'next/router';
 import { server } from '../config';
@@ -47,7 +47,7 @@ export default function ResultCard(props) {
     <span title={`${server}/details/${type}/${id}`}>
       <div style={container} className='grow'
         onClick={()=>router.push(`/details/${type}/${id}`)}  >
-          <img 
+          <Image 
               src={poster}
               alt={''}
               height={250}
