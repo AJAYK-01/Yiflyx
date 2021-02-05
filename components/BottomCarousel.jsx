@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
-import CarouselArrow from './CarouselArrow';
+// import CarouselArrow from './CarouselArrow';
 
 import "react-multi-carousel/lib/styles.css";
 

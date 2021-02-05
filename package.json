@@ -27,5 +27,9 @@
     "react-multi-carousel": "^2.6.1",
     "shards-react": "^1.0.3",
     "shards-ui": "^3.0.0"
-  }
+  },
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache"
+  ]
 }

@@ -1,4 +1,4 @@
-import { faShare, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import SnackBar from './SnackBar';
@@ -58,11 +58,11 @@ export default function DetailsCard(props) {
 
     const share = () => {
         const url = window.location.href;
-        const title = data['title']+' ('+data['year']+')\n';
+        const mtitle = data['title']+' ('+data['year']+')\n';
 
         if(navigator.share) {
             navigator.share({
-                title,
+                mtitle,
                 url
             })
         }

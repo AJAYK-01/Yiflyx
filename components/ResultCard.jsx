@@ -1,10 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 import { useRouter } from 'next/router';
 import { server } from '../config';
 
-// import './zoom.css';
 
 export default function ResultCard(props) {
 
