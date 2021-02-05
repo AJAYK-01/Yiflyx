@@ -3,13 +3,15 @@ import '../styles/globals.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 
-import "nprogress/nprogress.css";
-import TopProgressBar from '../components/TopProgressBar';
+import NextNProgress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }) {
   return (
      <Layout>
-        <TopProgressBar />
+        <NextNProgress 
+          startPosition={0.22}
+          height='3.4'
+        />
         <Component {...pageProps} />
     </Layout>
   )
