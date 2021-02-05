@@ -1,4 +1,4 @@
-import HeaderNavBar from "./navbar"
+import HeaderNavBar from "./NavBar"
 
 const Layout = (props) => {
     return(

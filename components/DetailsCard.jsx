@@ -1,4 +1,7 @@
-import React from 'react';
+import { faShare, faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
+import SnackBar from './SnackBar';
 import StreamButton from './StreamButton';
 
 export default function DetailsCard(props) {
@@ -12,6 +15,12 @@ export default function DetailsCard(props) {
         maxWidth: '560px', 
         paddingLeft: '10px',
         paddingRight: '10px'
+    }
+
+    const titleBar = {
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'space-between',
     }
 
     const title = {
@@ -40,10 +49,38 @@ export default function DetailsCard(props) {
         marginBottom: '20px'
     }
 
+
+    const [ isOpen, setOpen ] = useState(false);
+
+    const toggle = () => {
+        setOpen(!isOpen);
+    }
+
+    const share = () => {
+        const url = window.location.href;
+        if(navigator.share) {
+            navigator.share({
+                title,
+                url
+            })
+        }
+        else {
+            navigator.clipboard.writeText(url);
+            setOpen(!isOpen);
+        }
+    }
+
     return(
         <div style={container} >
-            <p style={title} >{data['title']+` (${data['year']})`}</p>
-            
+            <SnackBar isOpen={isOpen} toggle={toggle} />
+            <div style={titleBar} >
+                
+                <p style={title} >{data['title']+` (${data['year']})`}</p>
+                
+                <FontAwesomeIcon icon={faShare} color={'white'} size={'2x'} onClick={share}
+                    style={{padding: '4px', cursor: 'pointer'}} />
+
+            </div>
             <p style={desc} >{data['desc']}</p>
             
             {data['links'].length !== 0 
