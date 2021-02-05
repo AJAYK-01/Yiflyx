@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { server } from '../config';
+import Head from 'next/head';
 
 import CarouselCard from '../components/CarouselCard';
 import BottomCarousel from '../components/BottomCarousel';
@@ -64,52 +65,58 @@ function Trending({ data }) {
     }
 
     return(
-        <div style={margins} >
+        <div>
+            <Head>
+                <title>Yiflyx - Discover latest movies and shows</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="description" content="Find and share all your favourite movies and shows at Yiflyx" key="description" />
+            </Head>
 
-            <div style={toprow} >
+            <div style={margins} >
+                <div style={toprow} >
 
-                <div style={title}>Discover latest movies and shows ,
-                and find where to watch them, all from one place.</div>
+                    <div style={title}>Discover latest movies and shows ,
+                    and find where to watch them, all from one place.</div>
 
-                <div style={topcarousel}>
-                    <TopCarousel>
-                        {trend.map((result) => {
-                            return(
-                                <div >
-                                    <TrendingCard {...result} />
-                                </div>
-                            )
-                        })}
-                    </TopCarousel>
+                    <div style={topcarousel}>
+                        <TopCarousel>
+                            {trend.map((result) => {
+                                return(
+                                    <div >
+                                        <TrendingCard {...result} />
+                                    </div>
+                                )
+                            })}
+                        </TopCarousel>
+                    </div>
                 </div>
+
+                <div style={subtitle} >Popular Movies</div>
+
+                <BottomCarousel>
+                    {movies.map((result) => {
+                        return(
+                            <div >
+                                <CarouselCard {...result} />
+                            </div>
+                        )
+                    })}
+                </BottomCarousel>
+                
+
+                <div style={subtitle} >Popular Shows</div>
+                
+                <BottomCarousel>
+                    {shows.map((result) => {
+                        return(
+                            <div >
+                                <CarouselCard {...result} />
+                            </div>
+                        )
+                    })}
+                </BottomCarousel>
             </div>
-
-            <div style={subtitle} >Popular Movies</div>
-
-            <BottomCarousel>
-                {movies.map((result) => {
-                    return(
-                        <div >
-                            <CarouselCard {...result} />
-                        </div>
-                    )
-                })}
-            </BottomCarousel>
-            
-
-            <div style={subtitle} >Popular Shows</div>
-            
-            <BottomCarousel>
-                {shows.map((result) => {
-                    return(
-                        <div >
-                            <CarouselCard {...result} />
-                        </div>
-                    )
-                })}
-            </BottomCarousel>
         </div>
-   
     );
 }
 

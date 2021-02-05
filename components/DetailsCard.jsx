@@ -58,6 +58,8 @@ export default function DetailsCard(props) {
 
     const share = () => {
         const url = window.location.href;
+        const title = data['title']+' ('+data['year']+')\n';
+
         if(navigator.share) {
             navigator.share({
                 title,
@@ -72,12 +74,14 @@ export default function DetailsCard(props) {
 
     return(
         <div style={container} >
+
             <SnackBar isOpen={isOpen} toggle={toggle} />
+            
             <div style={titleBar} >
                 
                 <p style={title} >{data['title']+` (${data['year']})`}</p>
                 
-                <FontAwesomeIcon icon={faShare} color={'white'} size={'2x'} onClick={share}
+                <FontAwesomeIcon icon={faShareAlt} color={'white'} size={'2x'} onClick={share}
                     style={{padding: '4px', cursor: 'pointer'}} />
 
             </div>

@@ -39,7 +39,7 @@ export default function StreamButton(props) {
                 src={`/assets/${provider}.jpg`}
                 width={50}
                 height={50}
-                style={{borderRadius: '8px'}}
+                style={{borderRadius: '8px', marginBottom: '15px'}}
             />
         </a>
     )

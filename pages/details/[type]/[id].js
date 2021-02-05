@@ -1,13 +1,11 @@
 import axios from 'axios';
 import React from 'react';
-import Image from 'next/image';
+import Head from 'next/head';
 import { server } from '../../../config';
 import DetailsCard from '../../../components/DetailsCard';
 
 
 function Details({ data }) {
-
-    // console.log(data);
 
     const container = {
         display: 'flex',
@@ -31,20 +29,28 @@ function Details({ data }) {
         marginBottom: '10px',
         justifyContent: 'center',
         maxWidth: '400px',
+        maxHeight: '60vh'
     }
 
     return(
-        <div >
-            <div style={container} >
-                <div style={image} >
-                    <img 
-                        src={data['poster']}
-                        height={400}
-                        width={280}
-                        style={{objectFit: 'scale-down'}}
-                    />
+        <div>
+            <Head>
+                <title>{`${data['title']} (${data['year']}) - Yiflyx`}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="description" content="Find and share all your favourite movies and shows at Yiflyx" key="description" />
+            </Head>
+            <div style={{padding: '15px'}} >
+                <div style={container} >
+                    <div style={image} >
+                        <img 
+                            src={data['poster']}
+                            // height={400}
+                            width={280}
+                            style={{objectFit: 'scale-down'}}
+                        />
+                    </div>
+                    <DetailsCard data={data} />
                 </div>
-                <DetailsCard data={data} />
             </div>
         </div>
     );
