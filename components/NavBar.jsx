@@ -50,9 +50,9 @@ export default function HeaderNavBar() {
           <form onSubmit={search} style={searchBox} >
             <InputGroup size="sm" seamless  >
                 <InputGroupAddon type="prepend">
-                <InputGroupText>
-                    <FontAwesomeIcon icon={faSearch} />
-                </InputGroupText>
+                  <InputGroupText>
+                      <FontAwesomeIcon icon={faSearch} />
+                  </InputGroupText>
                 </InputGroupAddon>
                     <FormInput className="border-0" placeholder="Search..." value={searchTerm} 
                     onChange={(e) => setTerm(e.target.value)} />
