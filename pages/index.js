@@ -120,12 +120,12 @@ function Trending({ data }) {
     );
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 
     const result = await axios.get(`${server}/trending`);
     const data = await result.data;
 
-    return { props: { data }, revalidate: 10000, }
+    return { props: { data } }
 }
 
 export default Trending;
