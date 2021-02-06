@@ -31,7 +31,20 @@ function getDetails(id, details) {
           })
         }
         catch (e) {
-          console.log('line 120'+e);
+          console.log('line 34'+e);
+        }
+
+        var imdb = '';
+        try {
+          let extids = details['external_ids'];
+          extids.forEach((extid) => {
+              if(extid['provider'] === 'imdb') {
+                imdb = extid['external_id'];
+              }
+          })
+        }
+        catch(e) {
+          console.log('line 41'+e);
         }
 
         var trailer = ''
@@ -49,7 +62,8 @@ function getDetails(id, details) {
           desc: desc, 
           year: year,
           links: links,
-          trailer: trailer
+          trailer: trailer,
+          imdb: imdb
         };
         return (params);
     }

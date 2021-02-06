@@ -3,15 +3,20 @@ import React from 'react';
 import Head from 'next/head';
 import { server } from '../../../config';
 import DetailsCard from '../../../components/DetailsCard';
+import BottomCarousel from '../../../components/BottomCarousel';
+import CastCard from '../../../components/CastCard';
 
 
 function Details({ data }) {
 
+    const cast = data['imdb']['cast'];
+    console.log(cast);
+
     const container = {
         display: 'flex',
         margin: 'auto', 
-        flexDirection: 'row', 
-        justifyContent: 'space-around', 
+        flexDirection: 'column', 
+        justifyContent: 'flex-start', 
         paddingTop: '35px',
         paddingBottom: '35px',
         paddingLeft: '10px',
@@ -19,7 +24,14 @@ function Details({ data }) {
         backgroundColor: '#ffffff28',
         maxWidth: '1100px',
         borderRadius: '20px',
-        boxShadow: '8px 6px 8px #00000080',
+        boxShadow: '8px 6px 8px #00000080',       
+    }
+
+    const rowcontainer = {
+        display: 'flex',
+        flexDirection: 'row', 
+        justifyContent: 'space-around', 
+        padding: '15px',
         flexWrap: 'wrap',        
     }
 
@@ -34,6 +46,14 @@ function Details({ data }) {
         // height: '20%'
     }
 
+    const title = {
+        fontSize: '18px',
+        fontFamily: 'poppins',
+        color: 'white',
+        marginBottom: '10px',
+        marginLeft: '5px'
+    }
+
     return(
         <div>
             <Head>
@@ -42,8 +62,8 @@ function Details({ data }) {
                 <meta property="title" content="Yiflyx" key="title" />
                 <meta property="description" content="Find and share all your favourite movies and shows at Yiflyx" key="description" />
             </Head>
-            <div style={{padding: '15px'}} >
-                <div style={container} >
+            <div style={container} >
+                <div style={rowcontainer} >
                     <div style={image} >
                         <img 
                             src={data['poster']}
@@ -54,6 +74,15 @@ function Details({ data }) {
                     </div>
                     <DetailsCard data={data} />
                 </div>
+
+                {cast.length !==0 ? <p style={title} >Cast</p> : <div />}
+                <BottomCarousel >
+                    {cast.map((e) => {
+                        return(
+                            <CastCard poster={e['image']} name={e['name']} link={e['id']} />
+                        )
+                    })}
+                </BottomCarousel>
             </div>
         </div>
     );

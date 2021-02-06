@@ -82,9 +82,13 @@ export default function DetailsCard(props) {
                 
                 <p style={title} >{data['title']+` (${data['year']})`}</p>
                 
-                <FontAwesomeIcon icon={faShareAlt} color={'white'} size={'2x'} onClick={share}
-                    style={{ marginTop: '5px', cursor: 'pointer'}} />
+                <div >
+                    
+                    <FontAwesomeIcon icon={faShareAlt} color={'white'} size={'2x'} onClick={share}
+                        style={{ marginTop: '5px', cursor: 'pointer'}} />
 
+                </div>
+                
             </div>
             <p style={desc} >{data['desc']}</p>
             

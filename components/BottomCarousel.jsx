@@ -23,13 +23,13 @@ export default function BottomCarousel(props) {
           slidesToSlide: 1
         },
         mobile: {
-          breakpoint: { max: 480, min: 250 },
-          items: 2,
+          breakpoint: { max: 480, min: 300 },
+          items: 2.5,
           slidesToSlide: 1
         },
         toosmall: {
-            breakpoint: { max: 250, min: 0 },
-            items: 1,
+            breakpoint: { max: 300, min: 0 },
+            items: 1.5,
             slidesToSlide: 1
           }
       };

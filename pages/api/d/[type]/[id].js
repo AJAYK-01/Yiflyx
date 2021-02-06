@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { server } from '../../../../config';
+
 const JustWatch = require('justwatch-api');
 const { getDetails } = require('../../../../server/model');
 
@@ -21,7 +24,12 @@ export default (req,res) => {
           res.status(404).render('https://imdb.com/');
         }
         else{
-          res.json(params);
+          let imdb = params['imdb'];
+          axios.get(`${server}/imdb/${imdb}`).then((response) => {
+              const cast = response.data['cast'];
+              params['imdb'] = {id: imdb, cast: cast};
+              res.json(params);
+          })
         }
     });
 }
