@@ -14,7 +14,8 @@ export default function DetailsCard(props) {
         justifyContent: 'flex-start',
         maxWidth: '560px', 
         paddingLeft: '10px',
-        paddingRight: '10px'
+        paddingRight: '10px',
+        overflow: 'hidden'
     }
 
     const titleBar = {

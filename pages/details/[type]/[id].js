@@ -29,7 +29,9 @@ function Details({ data }) {
         marginBottom: '10px',
         justifyContent: 'center',
         maxWidth: '400px',
-        maxHeight: '60vh'
+        maxHeight: '32vw',
+        minHeight: '220px'
+        // height: '20%'
     }
 
     return(
@@ -45,8 +47,8 @@ function Details({ data }) {
                     <div style={image} >
                         <img 
                             src={data['poster']}
-                            // height={400}
-                            width={280}
+                            // height='50%'
+                            // width={280}
                             style={{objectFit: 'scale-down'}}
                         />
                     </div>

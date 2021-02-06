@@ -40,7 +40,6 @@ export default function BottomCarousel(props) {
             swipeable='true'
             responsive={responsive}
             ssr={true}
-            // customRightArrow={<CarouselArrow />}
         >
             {props.children}
         </Carousel>
