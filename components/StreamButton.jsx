@@ -8,6 +8,9 @@ export default function StreamButton(props) {
     if(id === 3) {
         provider = 'play'
     }
+    else if(id === -1) {
+        provider = 'imdb'
+    }
     else if(id === 8) {
         provider = 'netflix'
     }
@@ -37,9 +40,9 @@ export default function StreamButton(props) {
         <a href={url} target='_blank' rel="noopener noreferrer" style={{marginRight: '30px'}} >
             <img 
                 src={`/assets/${provider}.jpg`}
-                width={50}
-                height={50}
-                style={{borderRadius: '8px', marginBottom: '15px'}}
+                width={45}
+                height={45}
+                style={{borderRadius: '8px', marginBottom: '15px', marginLeft: '2px'}}
             />
         </a>
     )

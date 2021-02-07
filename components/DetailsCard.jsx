@@ -7,6 +7,7 @@ import StreamButton from './StreamButton';
 export default function DetailsCard(props) {
 
     const { data } = props;
+    const imdbLink = `https://imdb.com/title/${data['imdb']['id']}`
 
     const container = {
         display: 'flex', 
@@ -24,6 +25,19 @@ export default function DetailsCard(props) {
         justifyContent: 'space-between'
     }
 
+    const topButtons = {
+        width: '150px', 
+        display: 'flex', 
+        justifyContent: 'center', 
+        flexWrap: 'wrap'
+    }
+
+    const shareIcon = {
+        cursor: 'pointer', 
+        margin: '3px', 
+        marginRight: '16px'
+    }
+
     const title = {
         fontFamily: 'poppins',
         fontSize: '28px',
@@ -35,7 +49,8 @@ export default function DetailsCard(props) {
     const desc = {
         fontSize: '15px',
         color: 'white',
-        marginBottom: '15px'
+        marginBottom: '15px',
+        marginTop: '5px'
     }
 
     const subtitle = {
@@ -63,8 +78,8 @@ export default function DetailsCard(props) {
 
         if(navigator.share) {
             navigator.share({
-                mtitle,
-                url
+                title: mtitle,
+                url: url
             })
         }
         else {
@@ -82,10 +97,10 @@ export default function DetailsCard(props) {
                 
                 <p style={title} >{data['title']+` (${data['year']})`}</p>
                 
-                <div >
-                    
+                <div style={topButtons}>
+                    <StreamButton id={-1} url={imdbLink} />
                     <FontAwesomeIcon icon={faShareAlt} color={'white'} size={'2x'} onClick={share}
-                        style={{ marginTop: '5px', cursor: 'pointer'}} />
+                        style={shareIcon} />
 
                 </div>
                 

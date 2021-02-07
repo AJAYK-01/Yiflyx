@@ -55,8 +55,10 @@ export default function ResultCard(props) {
               objectFit='cover'
           />
           <div style={text} >{title}</div>
-          <div style={subtext} >{`(${year})`}</div>
-
+          { year !== ''
+            ?(<div style={subtext} >{`(${year})`}</div>)
+            : <div />
+          }
       </div>
     </span>
   );

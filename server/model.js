@@ -11,7 +11,11 @@ function getDetails(id, details) {
         }
         let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s332';
         let desc = details['short_description'];
-        let year = details['original_release_year'];
+        var year = details['original_release_year'];
+
+        if(!year) {
+          year = '';
+        }
 
         var streams = [];
         let links = [];
@@ -100,6 +104,10 @@ function getResults(results) {
       }
       let poster = 'https://images.justwatch.com/poster'+'/'+picId+'/s166';
       let year = details['original_release_year'];
+
+      if(!year) {
+        year = '';
+      }
 
       const params = { id: id, title: title, poster: poster, year: year, type: type, desc: desc };
       items.push(params);

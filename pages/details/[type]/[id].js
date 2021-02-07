@@ -17,10 +17,7 @@ function Details({ data }) {
         margin: 'auto', 
         flexDirection: 'column', 
         justifyContent: 'flex-start', 
-        paddingTop: '35px',
-        paddingBottom: '35px',
-        paddingLeft: '10px',
-        paddingRight: '10px',
+        padding: '25px 0px 25px 0px',
         backgroundColor: '#ffffff28',
         maxWidth: '1100px',
         borderRadius: '20px',
@@ -32,6 +29,7 @@ function Details({ data }) {
         flexDirection: 'row', 
         justifyContent: 'space-around', 
         padding: '15px',
+        paddingBottom: '10px',
         flexWrap: 'wrap',        
     }
 
@@ -51,11 +49,11 @@ function Details({ data }) {
         fontFamily: 'poppins',
         color: 'white',
         marginBottom: '10px',
-        marginLeft: '5px'
+        marginLeft: '8px'
     }
 
     return(
-        <div>
+        <div style={{padding: '10px'}} >
             <Head>
                 <title>{`${data['title']} (${data['year']}) - Yiflyx`}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -67,8 +65,6 @@ function Details({ data }) {
                     <div style={image} >
                         <img 
                             src={data['poster']}
-                            // height='50%'
-                            // width={280}
                             style={{objectFit: 'scale-down'}}
                         />
                     </div>
@@ -79,7 +75,8 @@ function Details({ data }) {
                 <BottomCarousel >
                     {cast.map((e) => {
                         return(
-                            <CastCard poster={e['image']} name={e['name']} link={e['id']} />
+                            <CastCard poster={e['image']} name={e['name']} 
+                                role={e['role']}  link={e['id']} />
                         )
                     })}
                 </BottomCarousel>

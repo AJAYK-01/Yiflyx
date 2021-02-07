@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function CastCard(props) {
 
-  const { poster, name, link } = props;
+  const { poster, name, link, role } = props;
   const [url, setUrl] = useState(poster);
 
   useEffect(() => {
@@ -21,19 +21,31 @@ export default function CastCard(props) {
       flex: 'display', 
       flexDirection: 'row', 
       width: '110px',
-      height: '200px',
+      height: '210.5px',
       cursor: 'pointer',
       justifyContent: 'center',
       backgroundColor: '#ffffff28',
       borderRadius: '8px',
       overflow: 'hidden',
+      textOverflow: 'ellipsis',
       boxShadow: '-6px 6px 45px #00000050'
   }
 
   const title = {
-    fontSize: '14px',
+    fontSize: '13px',
     color: 'white',
+    fontFamily: 'poppins',
+    fontWeight: '600px',
     marginLeft: '2px'
+  }
+
+  const subtitle = {
+    fontSize: '11px',
+    color: 'white',
+    marginLeft: '2px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'
   }
 
   return (
@@ -49,6 +61,7 @@ export default function CastCard(props) {
               style={{objectFit: 'cover', background: '#ffffff90'}}
           />
           <div style={title}>{name}</div>
+          <div style={subtitle}>{'as '+role}</div>
 
       </div>
     </span>

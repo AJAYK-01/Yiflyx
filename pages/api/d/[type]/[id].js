@@ -29,6 +29,10 @@ export default (req,res) => {
               const cast = response.data['cast'];
               params['imdb'] = {id: imdb, cast: cast};
               res.json(params);
+          }).catch((e) => {
+              const cast = [];
+              params['imdb'] = {id: imdb, cast: cast};
+              res.json(params);
           })
         }
     });
